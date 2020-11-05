@@ -1,0 +1,27 @@
+Launch the tool by specifying the number of images you want to analyze and the directory where images are located
+
+python label_images.py --dir /Users/robertocastello/deneb/labelling_tool/images_from_deneb --batch_size 5
+
+Procedure: 
+
+* If the image doesn’t contain PV press ’n’ and skip it —> the image will be copied o better moved into the /noPV folder
+* If the image doeas contain a PV:
+    * crop the area with the mouse functionalities [*]
+    * pressing 'r' will restore the initial situation (in case of mistakes)
+    * pressing 'b' will erase the last non-closed polygon (in case of mistakes)
+    * once you are satisfied, press ‘c’ to visualise the cropped area which will be saved
+    * press ’n’ to go to the next image —> the image will be copied/ moved into the /PV folder and the labelled one into /label
+* The scripts terminates automatically after the last image in the batch has been processed
+
+[*] ===================
+left —> draw lines
+central —> close the polygon
+
+
+To scan simply the previously labelled images to double check that the labelling has been done correctly:
+
+python scan_images.py --dir /Users/robertocastello/deneb/labelling_tool/images_from_deneb/PV --outdir /Users/robertocastello/deneb/labelling_tool/images_from_deneb_final --batch_size 5
+
+or to sort among different folders:
+
+python scan_images.py --dir /Users/robertocastello/deneb/labelling_tool/SI_25_2013_1164-14/PV --outdir1 /Users/robertocastello/deneb/labelling_tool/almost_PV_deneb --outdir2 /Users/robertocastello/deneb/labelling_tool/PV_flat  --outdir3 /Users/robertocastello/deneb/labelling_tool/PV_slope --outdir4 /Users/robertocastello/deneb/labelling_tool/solar_thermal --batch_size 400
